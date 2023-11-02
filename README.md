@@ -22,3 +22,43 @@ nodemon - 소스의 변화를 자동으로 감지해서 자동으로 서버를 �
 authentication - 각 사용자 별로 접근 가능한 권한을 제어하기 위해서 필요함
 
 로그아웃 - 로그아웃하려고 하는 유저의 db를 찾아서 그 유저의 토큰을 지움, 토큰을 없애게 되면 인증을 할 때 사용했던 토큰에 변화가 생기므로 인증이 풀림
+
+=================================================================================================================================
+
+React 기본 구조
+
+_actions
+_reducers -> redux를 위한 폴더들
+
+components/views -> 페이지들이 들어가는 곳
+
+components/views/Sections -> 페이지에 관련된 css 파일, component
+
+App.js -> Routing 관련 일 처리
+Config.js -> 환경변수 설정
+hoc -> higher order component
+utils -> 여러 곳에서 쓰일 수 있는 것들을 넣어둠 
+
+
+page 간의 이동을 위해서 react-router-dom을 사용
+
+기존에는 client 화면이 없었기 때문에 postman을 사용했지만, 이제는 client가 있으므로 거기서 요청을 보내면 되는데 이때 사용하는 library가 axios
+ - npm install axios --save
+ 이렇게 할 때, 서버와 클라이언트 포트를 맞춰야 함
+
+포트를 맞춰도 CORS 정책 때문에 아무 설정 없이 Request를 보낼 수 없음 -> proxy 사용 - npm insatll http-proxy-middleware --save, src/setupProxy.js 만들기
+
+proxy server에서 중간에 유저의 ip를 임의로 바꿀 수 있음, 방화벽, 웹 필터, 데이터 제공 기능 등의 기능이 있음
+
+concurrently - front, backend 동시에 키기 - npm install concurrently --save
+
+css framework for reactjs - ant design : 파일 크기가 크지만, 사용이 쉽고 깔끔한 디자인 - npm install antd --save(client 폴더 안에)
+
+redux - 상태 관리 라이브러리(state)
+
+설치 -> npm install redux react-redux redux-promise(dispatch가 promise를 받아들일 수 있도록) redux-thunk(dispatch가 function을 사용할 수 있도록) --save // 4가지
+
+reducer - state가 변하면 이를 인식하고 변한 값을 다시 리턴하는 역할 -> 여러개를 합쳐서 combineReducers 이용
+
+
+hoc -> 컴포넌트를 넣어서 자체 함수를 통해서 다른 컴포넌트를 반환함

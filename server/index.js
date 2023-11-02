@@ -19,6 +19,10 @@ mongoose.connect(config.mongoURI)
 
 app.get('/', (req, res) => res.send('Hello World! 반갑습니다~ 안녕하세요~~')); //기본 route
 
+app.get('/api/hello', (req, res) => {
+    res.send('안녕하세요~~~ front와 back 연결 test 중');
+})
+
 app.post('/api/users/register', async (req, res) => {
     //회원 가입할 때 필요한 정보들을 client에서 가져오면 가져온 정보를 db에 넣기
     const user = new User(req.body);
